@@ -1,6 +1,6 @@
 <?php 
 //definindo timezone
-date_default_timezone_get('America/Sao_Paulo');
+date_default_timezone_set('America/Sao_Paulo');
 
 //constantes de banco de dados
 // Dica: Pesquise Enumerator - -
