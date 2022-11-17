@@ -1,0 +1,29 @@
+.tablelinha{
+    border: 1px solid blue;
+}
+.tablelinha td{
+    border-bottom: 1px solid red;
+    margin: 0%;
+}
+
+.campo{
+    padding: 5%;
+}
+
+.tabelafunc{
+    border: 1px solid orange;
+}
+
+.tabelafunc td{
+    border-bottom: 1px solid green;
+    margin: 0%;
+}
+
+.tabelaFilm{
+    border: 1px solid brown;
+}
+
+.tablelaFilm td{
+    border-bottom: 1px solid blue;
+    margin: 0%;
+}

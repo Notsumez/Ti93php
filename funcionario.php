@@ -5,6 +5,24 @@ $lista = $conn->query($consultaFuncSql);
 $row = $lista->fetch();
 print_r($row);
 $num_rows =$lista->rowCount();
+
+if(isset($_POST['bt-enviar']))
+{
+    $nome = $_POST['nome'];
+    $cpf = $_POST['cpf'];
+    $cargo = $_POST['cargo'];
+    $escala = $_POST['escala'];
+    $turno = $_POST['turno'];
+    $admissao = $_POST['admissao'];
+    $salario = $_POST['salario'];
+    $vt = $_POST['vt'];
+    $vr = $_POST['vr'];
+    $va = $_POST['va'];
+    $insertFuncSql = "insert funcionario (nome, cpf, cargo, escala, turno, admissao, salario, vt, vr, va) 
+        values ('$nome','$cpf','$cargo','$escala','$turno','$admissao','$salario','$vt','$vr','$va')";
+    $resultado = $conn->query($insertFuncSqlt);
+    header('location: funcionario.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,15 +31,10 @@ $num_rows =$lista->rowCount();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Funcionario (<?php echo $num_rows?>)</title>
-    <style>
-        td{
-            border-bottom: 1px solid blue;
-            width: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <table>
+    <table class="tabelaFunc">
         <thead>
             <th>Cod Funcionário</th>
             <th>Nome</th>
@@ -52,6 +65,74 @@ $num_rows =$lista->rowCount();
             <?php } while ($row = $lista->fetch());?>
         </tbody>
     </table>
-    
 </body>
+        <form action="#" method="post">
+        <div hidden>
+            <label for="cod">Código
+                <input type="text" name="cod" id="">
+            </label>
+        </div>
+        <div>
+            <label for="nome">Nome
+                <input type="text" name="nome" id="">
+            </label>
+        </div>
+        <div>
+            <label for="cpf">CPF
+                <input type="number" name="cpf" id="">
+            </label>
+        </div>
+        <div>
+            <label for="cargo">Cargo
+                <select name="cargo" id="">
+                    <option value="gerente">Gerente</option>
+                    <option value="rh">RH</option>
+                    <option value="adm">ADM</option>
+                    <option value="ti">TI</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label for="escala">Escala
+                <input type="datetime" name="escala" id="">
+            </label>
+        </div>
+        <div>
+            <label for="turno">Turno
+                <select name="turno" id="">
+                    <option value="manha">Matutino</option>
+                    <option value="tarde">Tarde</option>
+                    <option value="noite">Noturno</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label for="admissao">Admissão
+                <input type="date" name="admissao" id="">
+            </label>
+        </div>
+        <div>
+            <label for="salario">Salário
+                <input type="number" name="salario" id="">
+            </label>
+        </div>
+        <div>
+            <label for="vt">Vale Transporte
+                <input type="number" name="vt" id="">
+            </label>
+        </div>
+        <div>
+            <label for="vr">Vale Refeição
+                <input type="number" name="vr" id="">
+            </label>
+        </div>
+        <div>
+            <label for="va">Vale Alimentação
+                <input type="number" name="va" id="">
+            </label>
+        </div>
+        <div>
+            <button type="reset" name="bt-enviar">Enviar</button>
+        </div>
+    </form>
 </html>
