@@ -3,7 +3,6 @@ include 'conecta.php';
 $consultaFuncSql = 'SELECT * FROM funcionario WHERE demissao is null ORDER BY admissao asc';
 $lista = $conn->query($consultaFuncSql);
 $row = $lista->fetch();
-print_r($row);
 $num_rows =$lista->rowCount();
 
 if(isset($_POST['bt-enviar']))
